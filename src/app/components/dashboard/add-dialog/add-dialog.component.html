@@ -1,0 +1,110 @@
+<mat-toolbar color="primary" style="border-radius: 10px">
+  <h1 class="mat-dialog-title">
+    <b>{{ dialogTitle }}</b>
+  </h1>
+  <span class="example-spacer"></span>
+  <button mat-icon-button [mat-dialog-close]="errorMessage">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<form [formGroup]="addForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Full Name</mat-label>
+    <input matInput type="text" formControlName="fullName" />
+    <mat-error
+      *ngIf="handleError('fullName', 'required')"
+    >
+      Please enter your full name
+    </mat-error>
+    <mat-error
+      *ngIf="handleError('fullName', 'minlength')"
+    >
+      Full name must be at least 5 characters long
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput type="email" name="email" formControlName="email" />
+    <mat-error
+      *ngIf="handleError('email', 'required')"
+    >
+      Please enter Email address
+    </mat-error>
+    <mat-error
+      *ngIf="handleError('email', 'email')"
+    >
+      Please enter a Valid Email
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Department</mat-label>
+    <mat-select formControlName="department" placeholder="Department">
+      <mat-option *ngFor="let dept of departments" [value]="dept">
+        {{ dept }}
+      </mat-option>
+    </mat-select>
+    <mat-error
+      *ngIf="handleError('department', 'required')"
+    >
+      Please select a department
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Mobile</mat-label>
+    <input matInput type="number" name="phone" formControlName="phone" />
+    <mat-error
+      *ngIf="handleError('phone', 'required')"
+    >
+      Please enter Phone Number
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Choose a Date</mat-label>
+    <input matInput formControlName="dateOfBirth" [matDatepicker]="picker" (dateChange)="formatDate($event)"/>
+    <mat-datepicker-toggle matSuffix [for]="picker">
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-datepicker-toggle>
+    <mat-error
+      *ngIf="handleError('dateOfBirth', 'required')"
+    >
+      Choose a Date
+    </mat-error>
+  </mat-form-field>
+  <mat-radio-group
+    formControlName="gender"
+    [ngClass]="{ invalid: addForm.get('gender')?.invalid }"
+  >
+    <mat-label style="margin-right: 10px;">Gender : </mat-label>
+    <mat-radio-button value="Male">Male</mat-radio-button>
+    <mat-radio-button value="Female">Female</mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field appearance="outline" style="margin-top: 15px">
+    <mat-label>Salary</mat-label>
+    <input matInput type="number" formControlName="salary" />
+    <mat-error
+      *ngIf="handleError('salary', 'required')"
+    >
+      Please enter salary
+    </mat-error>
+  </mat-form-field>
+</form>
+<div class="mat-dialog-action normal">
+  <button
+    class="child"
+    mat-raised-button
+    color="warn"
+    [mat-dialog-close]="errorMessage"
+  >
+    Close
+  </button>
+  <button
+    [disabled]="!addForm.valid"
+    class="child"
+    mat-raised-button
+    color="primary"
+    (click)="addEmployee()"
+    [mat-dialog-close]="errorMessage"
+  >
+    {{ actionBtn }}
+  </button>
+</div>

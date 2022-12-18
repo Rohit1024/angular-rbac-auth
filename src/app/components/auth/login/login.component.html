@@ -1,0 +1,32 @@
+<div class="form-container mat-elevation-z5">
+    <h1 class="center">Login</h1>
+    <form [formGroup]="loginForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" name="email" formControlName="email" />
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error
+        *ngIf="handleErrorLogin('email', 'required')"
+        >Email is required</mat-error
+      >
+      <mat-error
+        *ngIf="handleErrorLogin('email', 'email')"
+        >Email should be of Valid Format</mat-error
+      >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" name="password" formControlName="password" />
+        <mat-error
+        *ngIf="handleErrorLogin('password', 'required')"
+        >Password is required</mat-error
+      >
+      <mat-icon matSuffix>lock</mat-icon>
+      </mat-form-field>
+      <div class="center margin-top">
+          <button type="submit" (click)="submit()" [disabled]="!loginForm.valid" class="action-button" mat-raised-button color="primary">Login</button>
+      </div>
+      <button mat-raised-button class="action-button margin-top">Login with Google</button>
+      <span class="center margin-top">New to our platform? <a class="navigation-link" style="text-decoration: none;" [routerLink]='["/auth/register"]'>Register!</a></span>
+    </form>
+  </div>

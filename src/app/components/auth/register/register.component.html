@@ -1,0 +1,109 @@
+<div class="form-container mat-elevation-z5">
+    <h1 class="center">Register a New User</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Display Name</mat-label>
+            <input
+              matInput
+              type="text"
+              required
+              name="name"
+              formControlName="displayName"
+            />
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-error
+              *ngIf="handleErrorRegister('displayName', 'required')"
+              >Display Name is required</mat-error
+            >
+            <mat-error
+              *ngIf="handleErrorRegister('displayName', 'minlength')"
+              >Display Name should atleast 3 characters</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              required
+              name="email"
+              formControlName="email"
+            />
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error
+              *ngIf="handleErrorRegister('email', 'required')"
+              >Email is required</mat-error
+            >
+            <mat-error
+              *ngIf="handleErrorRegister('email', 'email')"
+              >Email should be of Valid Format</mat-error
+            >
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              [type]="passwordHide ? 'password' : 'text'"
+              required
+              minlength="6"
+              name="password"
+              formControlName="password"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="passwordHide = !passwordHide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="passwordHide"
+              style="margin-right: -5px;"
+            >
+            <mat-icon matSuffix
+            >{{passwordHide ? 'visibility_off' : 'visibility'}}</mat-icon
+          >
+            </button>
+            <mat-error
+              *ngIf="handleErrorRegister('password', 'required')"
+              >Password is required</mat-error
+            >
+            <mat-error
+              *ngIf="handleErrorRegister('password', 'minlength')"
+              >Password must be of length 6</mat-error
+            >
+            <!-- <mat-icon matSuffix>lock</mat-icon> -->
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input
+              matInput
+              [type]="confirmPasswordHide ? 'password' : 'text'"
+              required
+              name="repassword"
+              formControlName="confirmPassword"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="confirmPasswordHide = !confirmPasswordHide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="confirmPasswordHide"
+              style="margin-right: -5px;"
+            >
+              <mat-icon matSuffix
+                >{{confirmPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon
+              >
+            </button>
+            <mat-error
+              *ngIf="handleErrorRegister('confirmPassword', 'required')"
+              >Confirm Password is required</mat-error
+            >
+            <mat-error
+              *ngIf="handleErrorRegister('confirmPassword', 'matching')"
+              >Passwords should match</mat-error
+            >
+            <!-- <mat-icon matSuffix>lock</mat-icon> -->
+          </mat-form-field>
+      <div class="center margin-top">
+        <button type="submit" class="action-button" mat-raised-button color="primary">Register!</button>
+      </div>
+      <span class="center margin-top">Already a user to our platform? <a class="navigation-link" style="text-decoration: none;" [routerLink]='["/auth/login"]'>login!</a></span>
+    </form>
+  </div>

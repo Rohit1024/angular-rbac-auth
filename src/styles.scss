@@ -1,1 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
+// @import "app/shared/theme.scss";
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.navigation-link {
+    margin-left: 8px;
+}
+
+.action-button {
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+  margin: 20px auto;
+}
+
+.normal{
+  display: flex;
+}
+
+.child{
+  flex: 1;
+  width: 100%;
+}
+
+.child:first-child{
+  margin-right: 20px;
+}
+
+.scale {
+  transform: scale(1.6);
+}
+
+.form-container {
+    display: block;
+    max-width: 400px;
+    margin: auto;
+  
+    background: #eceff1;
+    padding: 48px;
+    border-radius: 16px;
+  
+    mat-form-field {
+      width: 100%;
+    }
+  }
+  
+  .center {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .margin-top {
+    margin-top: 16px !important;
+  }
+  
+  .text-center {
+    text-align: center;
+  }

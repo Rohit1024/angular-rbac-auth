@@ -1,0 +1,20 @@
+<mat-toolbar color="warn" style="border-radius: 10px;">
+    <h2 mat-dialog-title>Are you Sure ?</h2>
+    <span class="example-spacer"></span>
+    <button mat-icon-button [mat-dialog-close]="errorMessage">
+        <mat-icon>close</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-dialog-content>
+    <h3>This will Delete <strong>{{ data.name }}</strong> Permenently, are you sure you want to delete ?</h3>
+</mat-dialog-content>
+
+<div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button [mat-dialog-close]="errorMessage">
+        Close
+    </button>
+    <button mat-raised-button color="warn" (click)="delete()" [mat-dialog-close]="errorMessage">
+        Delete
+    </button>
+</div>

@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-header class="center">
+    <mat-card-title>Thank You for Registering</mat-card-title>
+    <mat-card-subtitle
+      >We have sent a confirmation email to
+      <strong>{{ loggedInUserEmail }}</strong
+      >.</mat-card-subtitle
+    >
+  </mat-card-header>
+  <mat-card-content>
+    <p class="center">
+      Please check your email and click on the link to verfiy your email
+      address.
+    </p>
+  </mat-card-content>
+  <div class="center">
+    <mat-card-actions>
+      <button
+        class="center"
+        style="margin-right: 10px;"
+        type="button"
+        mat-raised-button
+        color="primary"
+        (click)="SendVerificationMail()"
+      >
+        <mat-icon style="margin-right: 10px;">refresh</mat-icon>
+        Resend Verification Email
+      </button>
+      <button mat-raised-button color="accent" (click)="navigate()">
+        <mat-icon style="margin-right: 10px;">arrow_back</mat-icon>Back to Log In ?
+      </button>
+    </mat-card-actions>
+  </div>
+</mat-card>

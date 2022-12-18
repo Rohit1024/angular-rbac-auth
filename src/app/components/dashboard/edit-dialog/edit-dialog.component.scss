@@ -1,0 +1,19 @@
+.mat-form-field {
+    width: 100%;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+}
+.invalid{
+    color: #f44336;
+}
+
+mat-toolbar{
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}

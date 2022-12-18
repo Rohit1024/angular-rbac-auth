@@ -1,0 +1,9 @@
+<ng-container *ngIf="user$ | async as user; else notLoged">
+    <h1>Welcome to the home page, {{user.displayName}}!</h1>
+    go to profile : <a [routerLink]='["/auth/profile"]'>Profile</a>
+</ng-container>
+
+<ng-template #notLoged>
+    <h1>Seems you are not logged In ?</h1>
+    go to Login : <a [routerLink]='["/auth/login"]'>login</a>
+</ng-template>
